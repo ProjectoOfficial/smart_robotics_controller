@@ -1,0 +1,44 @@
+{
+    "configurations": [
+        {
+            "name": "TEST",
+            "type": "python",
+            "request": "launch",
+            "program": "/home/daniel/ROS/ERC-Remote-Navigation-Sim/src/controller/scripts/test.py",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "DEPLOYER",
+            "type": "python",
+            "request": "launch",
+            "program": "/home/daniel/ROS/ERC-Remote-Navigation-Sim/src/controller/scripts/launch_deployer.py",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "CAMERA",
+            "type": "python",
+            "request": "launch",
+            "program": "/home/daniel/ROS/ERC-Remote-Navigation-Sim/src/controller/scripts/launch_camera.py",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "NAVIGATOR",
+            "type": "python",
+            "request": "launch",
+            "program": "/home/daniel/ROS/ERC-Remote-Navigation-Sim/src/controller/scripts/launch_navigator.py",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "IMU",
+            "type": "python",
+            "request": "launch",
+            "program": "/home/daniel/ROS/ERC-Remote-Navigation-Sim/src/controller/scripts/utils/imu.py",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+    ]
+}
