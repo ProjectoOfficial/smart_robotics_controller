@@ -66,9 +66,9 @@ class IMU:
         rotation_matrices = np.array([self.quaternion_to_matrix(q) for q in orientations])
         
         for i in range(len(accelerations)):
-            # accelerations[i] = np.array([(rotation_matrices[i] @ accelerations[i])])
-            # self.kf.predict()
-            # self.kf.update(accelerations[i] + np.array([0, 0, -self._g])) # sum because we consider -g
+            accelerations[i] = np.array([(rotation_matrices[i] @ accelerations[i])])
+            self.kf.predict()
+            self.kf.update(accelerations[i] + np.array([0, 0, -self._g])) # sum because we consider -g
             accelerations[i] = accelerations[i] + np.array([0, 0, -self._g]) #self.kf.x 
         return accelerations
     

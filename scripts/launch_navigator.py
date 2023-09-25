@@ -1,6 +1,8 @@
 import rospy
 
 import matplotlib
+
+from probe.deployer import Deployer
 matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
 
@@ -72,7 +74,7 @@ class Navigator:
             self.depth = image
             
             threshold = 0.4
-            obstacles = self.gmapper.find_obstacle(self.cur_pose, self.depth, threshold, False)
+            obstacles = self.gmapper.find_obstacle(self.cur_pose, self.depth, threshold, True)
             if len(obstacles):
                 self.x_data_obstacle.append(self.cur_pose[0, 3] + threshold)
                 self.y_data_obstacle.append(self.cur_pose[1, 3])
@@ -195,19 +197,21 @@ if __name__ == '__main__':
     rospy.loginfo("NAVIGATOR NODE ...")
     rospy.Rate(1000)
 
+    deployer = Deployer()
     try:
-        goal = np.array([-2,1.5])
+        goal = np.array([1.5,1.5])
         navigator = Navigator(x_range=30, y_range=30)
         navigator.update()
         navigator.wait_for_pose()
         navigator.plot_point(goal, "orange")
         navigator.show()
 
-        navigator.move(goal)
+        # navigator.move(goal)
         while not rospy.is_shutdown():
             navigator.update()
-            rospy.spin()
+            # rospy.spin()
     except Exception as e:
         print(e)
     finally:
         plt.close("all")
+    deployer.deploy()

@@ -9,7 +9,7 @@ from odometry.features import feature_extractor, feature_matching, get_detector,
 from odometry.motion import motion_estimation
 from filterpy.kalman import KalmanFilter
 
-from utils.imu import IMU
+from imu.imu import IMU
 from scipy.spatial.transform import Rotation as R
 from scipy.linalg import expm
 
